@@ -1,0 +1,24 @@
+# kubernetes-deploy.yaml
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-java-deployment
+  labels:
+    app: hello-java
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: hello-java
+  template:
+    metadata:
+      labels:
+        app: hello-java
+    spec:
+      containers:
+      - name: hello-java-container
+        # Replace with your actual Docker Hub image path
+        image: ditisscdac/hello-java:latest
+        ports:
+        - containerPort: 8080 # Change this if your Java app listens on a different port
